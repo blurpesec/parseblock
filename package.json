@@ -1,0 +1,23 @@
+{
+  "name": "parseblock",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node src/index"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bn.js": "^4.11.8",
+    "crypto": "^1.0.1",
+    "fs": "^0.0.1-security",
+    "ts-node": "^8.0.3",
+    "typescript": "^3.2.2"
+  },
+  "devDependencies": {
+    "@types/node": "^11.12.0",
+    "debug": "^4.1.0"
+  }
+}
