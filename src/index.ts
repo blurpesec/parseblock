@@ -1,9 +1,6 @@
 import * as fs from 'fs';
-import Debug from 'debug';
 import * as blocksee from './block';
 import { BN } from 'bn.js';
-
-const debug = Debug('blah');
 
 const transactionHistory = {}
 
@@ -16,7 +13,7 @@ const parseBlock = ( block ) => {
     const input: string = entry.input;
     const methodID = input.substring(0,10);
     const slimmedEntry: slimmedEntry = (({ to, from, value, nonce, blockNumber, gas, gasPrice, input }) => ({ to, from, value, nonce, blockNumber, gas, gasPrice, input, type: 'simple', timestamp: hexStringToNumber(timestamp) }))(entry);
-    if (methodID === '0xa9059cbb') {
+    if (methodID === '0xa9059cbb') { // ERC20 Transfers
       slimmedEntry['type'] = 'erc20';
       slimmedEntry['transferTo'] = getAddressFromHexWrapper(input.substring(11,74));
       slimmedEntry['transferValue'] = parseFloat(new BN(input.substring(75, 138), 16));    
