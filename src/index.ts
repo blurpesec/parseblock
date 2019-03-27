@@ -46,14 +46,10 @@ const parseBlock = ( block ) => {
 const start = async (): Promise<any> => {
   var count = 0;
   console.time('test')
-  blocksee.map(blocks => {
-    count += 1;
-    console.log(count + ' block started.')
-    parseBlock(blocks);
-  })
+  parseBlock(blocksee);
   console.timeEnd('test')
   fs.writeFile('./out.json', JSON.stringify(transactionHistory, null, 4), (err) => {
-    if (err) debug(err);
+    if (err) console.log(err);
   });
 }
 
